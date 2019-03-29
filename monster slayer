@@ -213,7 +213,7 @@ int main()
 					cout << "max MP up and MP refilled" << endl;
 					cout << "attack up" << endl;
 					monstermaxHP++;
-					monstermaxMP++;
+					monstermaxMP+3;
 					monsterattack++;
 					cout << "your foes grow stronger" << endl;
 					level++;
