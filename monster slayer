@@ -9,29 +9,29 @@
 #include<cstdlib>
 #include<ctime>
 using namespace std;
-int playeraction,
-monsteraction,
-playerhealth,
-playerhealcost,
-monsterhealcost,
-playerdmg,
-monsterdmg,
-playermaxHP,
-playerMP,
-playermaxMP,
-playerhealstat,
-monsterhealstat,
-monsterhealth,
-monstermaxHP,
-monstermaxMP,
-monsterMP,
-playerattack,
-monsterattack,
-monsterskilled,
-experience,
-experiencefornextlevel,
-level;
-char response;
+int playeraction,	//what the player does
+monsteraction,	//what the monster does
+playerhealth,	//players current health
+playerhealcost,	//how much MP it costs the player to heal
+monsterhealcost,	//how much MP it costs the monster to heal
+playerdmg,	//how much damage the player can do
+monsterdmg,	//how much damage the monster can do
+playermaxHP,	//the players maximum health
+playerMP,	//the players current MP (used for healing and potentially other spells in the future)
+playermaxMP,	//the players maximum MP
+playerhealstat,	//how much the player heals by
+monsterhealstat,	//how much the monster heals by
+monsterhealth,	//how much health the monster currently has
+monstermaxHP,	//the monsters maximum health
+monstermaxMP,	//the monsters maximum MP
+monsterMP,	//the monsters current MP (used for healing and potentially other spells in the future)
+playerattack,	//how much damage the player actually does that round
+monsterattack,	//how much damage the monster actually does that round
+monsterskilled,	//how many monsters the player has killed
+experience,	//experience points the player has
+experiencefornextlevel,	//how many experience points the player needs to get to the next level
+level;	//the players current level
+char response;	//the players decision whether they want to play again after game over
 int main()
 {
 	time_t seconds;
