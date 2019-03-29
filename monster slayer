@@ -45,6 +45,7 @@ int main()
 		system("pause");
 		system("CLS");
 		level = 1;
+		monsterskilled=0;
 		playerhealstat = 5;
 		monsterhealstat = 2;
 		monstermaxMP = 6;
