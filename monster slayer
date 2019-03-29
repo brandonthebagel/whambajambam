@@ -36,11 +36,12 @@ int main()
 {
 	time_t seconds;
 	time(&seconds);
-	srand((unsigned int)seconds);
+	srand((unsigned int)seconds);	//seeds random number generator for monsters actions
 	do {
 	gamestart:
 		system("CLS");
-		cout << "Monster Slayer" << endl;
+		cout << "MONSTER SLAYER" << endl;
+		cout<<"made by brandon chen"<<endl;	//title screen
 		system("pause");
 		system("CLS");
 		level = 1;
@@ -57,7 +58,7 @@ int main()
 		experiencefornextlevel = 5;
 		experience = 0;
 		monstermaxHP = 15;
-		playerMP = 10;
+		playerMP = 10;		//base stats
 		do
 		{
 			system("CLS");
@@ -70,17 +71,19 @@ int main()
 					playerMP++;
 				if (monsterMP < monstermaxMP)
 					monsterMP++;
+				if (monsterMP < monstermaxMP)
+					monsterMP++;		//player and monster MP regen (note monster gets up to 2)
 		
 				
 					
-				monsteraction = rand() % (3) + 1;		//1=atk 2=defnd 3=heal
+				monsteraction = rand() % (3) + 1;		//generates monsters action that round 1=atk 2=defnd 3=heal
 				system("CLS");
 				cout << "level: " << level << endl;
 				cout << "HP: " << playerhealth <<"/"<<playermaxHP<< endl;
 				cout << "MP: " << playerMP <<"/"<<playermaxMP<< endl;
 				cout << "monsters HP: " << monsterhealth<<"/"<<monstermaxHP << endl;
-				cout << "monsters MP: " << monsterMP << "/" << monstermaxMP << endl;
-				cout << "1. attack(" << playerattack << "dmg)		2. defend		3. heal(-5MP)" << endl;
+				cout << "monsters MP: " << monsterMP << "/" << monstermaxMP << endl;	//displays player and monster current health and magic
+				cout << "1. attack(" << playerattack << "dmg)		2. defend		3. heal(-5MP)" << endl;	//player options
 				cin >> playeraction;
 				cout << endl;
 				
@@ -88,19 +91,19 @@ int main()
 				{
 					playerhealth = playerhealth - monsterattack;
 					monsterhealth = monsterhealth - playerattack;
-					cout << "you attack and monster attacks";
+					cout << "you both attack";
 				}
 				else if ((playeraction == 1) && (monsteraction == 2))	//player attacks monster defends
 				{
 					monsterhealth = monsterhealth - (playerattack / 2);
-					cout << "you attack but monster defends";
+					cout << "you attack but the monster defends";
 				}
 				else if ((playeraction == 1) && (monsteraction == 3))		//player attacks monster heals
 				{
-					cout << "you attacked and ";
+					cout << "you attacked ";
 					monsterhealth = monsterhealth - playerattack;
 					if (monsterMP < monsterhealcost)
-						cout << "monster tried to heal but couldn't";
+						cout << "and the monster tried to heal but couldn't";
 					else
 					{
 						monsterMP = monsterMP - monsterhealcost;
@@ -108,13 +111,13 @@ int main()
 							monsterhealth = monsterhealth + monsterhealstat;
 						else
 							monsterhealth = monstermaxHP;
-						cout << "monster healed";
+						cout << "but the monster healed";
 					}
 				}
 				else if ((playeraction == 2) && (monsteraction == 1))	//player defends monster attacks
 				{
 					playerhealth = playerhealth - (monsterattack / 2);
-					cout << "monster attacks but you defended";
+					cout << "the monster attacks but you defended";
 				}
 				else if ((playeraction == 2) && (monsteraction == 2))		//both defend
 				{
@@ -122,9 +125,9 @@ int main()
 				}
 				else if ((playeraction == 2) && (monsteraction == 3))		//player defends monster heals
 				{
-					cout << "you defended and ";
+					cout << "you defended ";
 					if (monsterMP < monsterhealcost)
-						cout << "monster tried to heal but couldn't";
+						cout << "and the monster tried to heal but couldn't";
 					else
 					{
 						monsterMP = monsterMP - monsterhealcost;
@@ -132,15 +135,15 @@ int main()
 							monsterhealth = monsterhealth + monsterhealstat;
 						else
 							monsterhealth = monstermaxHP;
-						cout << "monster healed";
+						cout << "but the monster healed";
 					}
 				}
 				else if ((playeraction == 3) && (monsteraction == 1))	//player heals monster attacks
 				{
 					playerhealth = playerhealth - monsterattack;
-					cout << "monster attacks and ";
+					cout << "the monster attacks ";
 					if (playerMP < playerhealcost)
-						cout << "you tried to heal but couldn't";
+						cout << "and you tried to heal but couldn't";
 					else
 					{
 						playerMP = playerMP - playerhealcost;
@@ -148,14 +151,14 @@ int main()
 							playerhealth = playerhealth + playerhealstat;
 						else
 							playerhealth = playermaxHP;
-						cout << "you healed";
+						cout << "but you healed";
 					}
 				}
 				else if ((playeraction == 3) && (monsteraction == 2))	//player heals monster defends
 				{
-					cout << "monster defends and ";
+					cout << "the monster defends ";
 					if (playerMP < playerhealcost)
-						cout << "you tried to heal but couldn't";
+						cout << "and you tried to heal but couldn't";
 					else
 					{
 						playerMP = playerMP - playerhealcost;
@@ -163,13 +166,13 @@ int main()
 							playerhealth = playerhealth + playerhealstat;
 						else
 							playerhealth = playermaxHP;
-						cout << "you healed";
+						cout << "but you healed";
 					}
 				}
 				else if ((playeraction == 3) && (monsteraction == 3))		//both heal
 				{
 					if (monsterMP < monsterhealcost)
-						cout << "monster tried to heal but couldn't ";
+						cout << "the monster tried to heal but couldn't ";
 					else
 					{
 						monsterMP = monsterMP - monsterhealcost;
@@ -177,11 +180,11 @@ int main()
 							monsterhealth = monsterhealth + monsterhealstat;
 						else
 							monsterhealth = monstermaxHP;
-						cout << "monster healed";
+						cout << "the monster healed";
 					}
 					cout << "and ";
 					if (playerMP < playerhealcost)
-						cout << "you tried to heal but couldn't";
+						cout << "and you tried to heal but couldn't";
 					else
 					{
 						playerMP = playerMP - playerhealcost;
@@ -189,18 +192,18 @@ int main()
 							playerhealth = playerhealth + playerhealstat;
 						else
 							playerhealth = playermaxHP;
-						cout << "you healed";
+						cout << "and you healed";
 					}
 				}
-				if (playerhealth < 1)
+				if (playerhealth < 1)		//player dies
 					goto gameover;
 				cout << endl;
 				system("pause");
 			} while (monsterhealth > 0);					//player defeats monster
 			cout << "monster defeated!" << endl;
 			monsterskilled++;
-			experience++;
-			if (experience == experiencefornextlevel)
+			experience++;	//adds experience points
+			if (experience == experiencefornextlevel)	//checks if player has leveled up
 			{
 				cout << "level up!"<<endl;
 				experiencefornextlevel = experiencefornextlevel * 1.5;
@@ -215,7 +218,7 @@ int main()
 					monstermaxHP++;
 					monstermaxMP+3;
 					monsterattack++;
-					cout << "your foes grow stronger" << endl;
+					cout << "your foes grow stronger..." << endl;
 					level++;
 					playerhealstat++;
 			}
@@ -223,11 +226,11 @@ int main()
 		} while (playerhealth > 0);
 	gameover:
 		system("CLS");
-		cout <<endl<< "GAME OVER" << endl<<"you killed "<<monsterskilled<<" monsters"<<endl << "play again?" << endl;
+		cout <<endl<< "GAME OVER" << endl<<"you killed "<<monsterskilled<<" monsters"<<endl << "play again?" << endl;	//game over screen
 		cin >> response;
-		if ((response != 'n') && (response != 'N') && (response != 'y') && (response != 'Y'))
+		if ((response != 'n') && (response != 'N') && (response != 'y') && (response != 'Y'))	//if the player does not answer y or n it takes them back to the game over screen
 			goto gameover;
-	} while ((response == 'y') || (response == 'Y'));
+	} while ((response == 'y') || (response == 'Y'));	//player ends game
 	system("CLS");
 	cout << "Thanks for playing" << endl;
 	system("pause");
